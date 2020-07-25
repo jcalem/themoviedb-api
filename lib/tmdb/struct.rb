@@ -13,6 +13,10 @@ module Tmdb
       end
     end
 
+    def as_json(*args)
+      super.as_json['table']
+    end
+
     def analyze_value(v)
       case
         when v.is_a?(Hash)
