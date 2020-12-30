@@ -125,6 +125,11 @@ module Tmdb
       self.new(result)
     end
 
+    def self.recommendations(id, filters={})
+      result = Resource.new("/tv/#{id}/recommendations", filters).get
+      Recommendation.new(result)
+    end
+
     def self.create_new_instance_with_normalized_data(result)
       tv = self.new(
           result.except(
